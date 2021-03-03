@@ -1,15 +1,22 @@
-from keras.datasets import mnist
-print("不想写代码的程序员")
 import numpy as np
+import matplotlib.pyplot as plt
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.datasets import mnist
+import scipy.io as scio
 
-# 将多个数组保存到磁盘
-a = np.arange(5)
-b = np.arange(6)
-c = np.arange(7)
-np.savez('test', a, b, c_array=c)  # c_array是数组c的命名
-# 读取数组
-data = np.load('test.npz')  #类似于字典{‘arr_0’:a,’arr_1’:b,’c_array’:c}
-print('arr_0 : ', data['arr_0'])
-print('arr_1 : ', data['arr_1'])
-print('c_array : ', data['c_array'])
-
+# X_data = np.random.rand(200)
+# # # print(X_data)
+# # # print(type(X_data))
+# # # print("数组的均值是：%d"%(np.mean(X_data)))
+# # # print("数组的方差是：%d"%(np.var(X_data)))
+# (train_images,train_labels),(test_images,test_lable) = mnist.load_data()
+# print(train_images.shape)
+# print(train_labels.shape)
+# for i in train_labels:
+#     # print(i)
+#     print(type(i))
+# for ii in train_images:
+#     print(ii.ndim)
+#     break
+# print(train_images.ndim)
