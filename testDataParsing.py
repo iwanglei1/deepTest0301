@@ -20,7 +20,6 @@ datastr5 = data['m5spec']
 datastr5p = data['mp5spec']
 datastr6p = data['mp6spec']
 dataAll = data['propvals']
-# print(datastr5.dtype)
 # print(datast5r.shape)
 # print(datastr5.size)
 # print(datastr5[0,0]['data'])         #成功
