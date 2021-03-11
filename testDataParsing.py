@@ -21,14 +21,20 @@ def getOdata():
     dataContAll = dataAll[0,0]['data']
     moisture = np.empty(80,dtype=float)
     changdu = 0
-    print("######################################################")
-
-    print(type(dataContAll))
-
-    print("######################################################")
+    # print("######################################################")
+    #
+    # print(type(dataContAll))
+    #
+    # print("######################################################")
     for i in dataContAll:                                               #TODO 此处重写方便返回四种成分
          moisture[changdu] = i[0]
          changdu = changdu + 1
 
     return moisture,data5,datap5,datap6
-chengfen,d5,dp5,dp6 = getOdata()
+chengfenshui,d5,dp5,dp6 = getOdata()
+d5 -= d5.mean(axis=0)                      # 将数据压缩到0-1之间
+d5 /= d5.std(axis=0)
+dp5 -= dp5.mean(axis=0)
+dp5 /= dp5.std(axis=0)
+dp6 -= dp6.mean(axis=0)
+dp6 /= dp6.std(axis=0)
