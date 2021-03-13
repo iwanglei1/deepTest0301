@@ -4,6 +4,9 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.datasets import mnist
 import scipy.io as scio
+from keras import layers
+from keras import models
+from keras.optimizers import RMSprop
 # 成功将需要的数据转换为矩阵
 def getOdata():
     dataFile = 'C://Users//Liangyi//Desktop//'
@@ -41,7 +44,32 @@ chengfenshui,d5,dp5,dp6 = getOdata()   #调用函数返回原始数据，数据�
 ##################################################################################################
 train_data = d5[:60]
 test_data = d5[60:]
-train_lable = chengfenshui[:60]
-test_lable  = chengfenshui[60:]
-# print(len(train_data))
-# print(len(train_lable))
+train_lable = chengfenshui[0:60]
+test_lable  = chengfenshui[60:80]
+
+train_data= train_data.astype('float32')
+test_data= test_data.astype('float32')
+train_lable = train_lable.astype('float32')
+test_lable = test_lable.astype('float32')
+train_data = train_data.reshape(60,700,1)
+test_data = test_data.reshape(20,700,1)
+# print(test_data.shape)
+# test_data =test_data.reshape(80,700,1)
+#################################################################################################
+model = models.Sequential()
+model.add(layers.Conv1D(64,5,activation='tanh',input_shape=(700,1)))
+model.add(layers.MaxPooling1D(3))
+
+model.add(layers.Conv1D(32,5,activation='tanh'))
+model.add(layers.MaxPooling1D(3))
+
+model.add(layers.Conv1D(32,5,activation='tanh'))
+model.add(layers.GlobalMaxPooling1D())
+
+model.add(layers.Dense(8))
+model.add(layers.Dense(4))
+model.add(layers.Dense(1))
+
+model.summary()
+model.compile(optimizer=RMSprop(),loss='mse')
+history = model.fit(train_data,train_lable,epochs=20,batch_size=20,validation_data=(test_data,test_lable))
