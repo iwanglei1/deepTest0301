@@ -29,12 +29,19 @@ def getOdata():
     for i in dataContAll:                                               #TODO 此处重写方便返回四种成分
          moisture[changdu] = i[0]
          changdu = changdu + 1
-
+    data5 -= data5.mean(axis=0)  # 将数据压缩到0-1之间
+    data5 /= data5.std(axis=0)
+    datap5 -= datap5.mean(axis=0)
+    datap5 /= datap5.std(axis=0)
+    datap6 -= datap6.mean(axis=0)
+    datap6 /= datap6.std(axis=0)
     return moisture,data5,datap5,datap6
-chengfenshui,d5,dp5,dp6 = getOdata()
-d5 -= d5.mean(axis=0)                      # 将数据压缩到0-1之间
-d5 /= d5.std(axis=0)
-dp5 -= dp5.mean(axis=0)
-dp5 /= dp5.std(axis=0)
-dp6 -= dp6.mean(axis=0)
-dp6 /= dp6.std(axis=0)
+
+chengfenshui,d5,dp5,dp6 = getOdata()   #调用函数返回原始数据，数据已处理为均值为零，方差为1
+##################################################################################################
+train_data = d5[:60]
+test_data = d5[60:]
+train_lable = chengfenshui[:60]
+test_lable  = chengfenshui[60:]
+# print(len(train_data))
+# print(len(train_lable))
