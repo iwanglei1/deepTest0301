@@ -4,8 +4,14 @@ from keras import layers
 from keras import models
 from  keras import metrics
 from keras.optimizers import RMSprop
-
-
+import keras
+callback_list =[
+    keras.callbacks.ModelCheckpoint(
+        filepath= 'my_model.h5',      ##文件路径 存在当前路径下吧 还好找
+        monitor= 'val_loss',         ## 监控指标
+        save_best_only= True        ## 保持最佳模型
+    )
+]
 ####################################################################################################
 def trainModel(train_data,train_lable,test_data,test_lable):
 #####下面的代码进行训练 核心参数是神经网络的层数，卷积核的大小，密集层的细胞个数和层数
@@ -25,6 +31,11 @@ def trainModel(train_data,train_lable,test_data,test_lable):
 
     model.summary()
     model.compile(optimizer=RMSprop(),loss='mse')
-    history = model.fit(train_data,train_lable,epochs=30,batch_size=20,validation_data=(test_data,test_lable))
+    history = model.fit(train_data,train_lable,
+                        epochs=30,
+                        batch_size=20,
+                        validation_data=(test_data,test_lable),
+                        callbacks= callback_list
+                        )
     return history
 ###########################################################################################################

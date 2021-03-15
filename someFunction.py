@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 
 ################################################################################
+### 从桌面上的mat文件中读取数据，然后将数据处理成均值为0，标准差为1的形式
 def getOdata():
     dataFile = 'C://Users//Liangyi//Desktop//'
     dataName = 'corn.mat'
