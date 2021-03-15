@@ -65,3 +65,15 @@ def drawLoss(history):
     plt.legend()
     plt.show()
 #########################################################################################################
+def getTestData(chengfenshui,d5,dp5,dp6):
+    train_data = d5[:60]
+    test_data = d5[60:]
+    train_lable = chengfenshui[0:60]
+    test_lable = chengfenshui[60:80]
+    train_data = train_data.astype('float32')
+    test_data = test_data.astype('float32')
+    train_lable = train_lable.astype('float32')
+    test_lable = test_lable.astype('float32')
+    train_data = train_data.reshape(60, 700, 1)
+    test_data = test_data.reshape(20, 700, 1)
+    return test_data,test_lable
