@@ -1,7 +1,10 @@
 
 import someFunction as sF
 import someModel as sM
+import tensorflow as tf
 
+config = tf.compat.v1.ConfigProto(gpu_options=tf.compat.v1.GPUOptions(allow_growth=True))
+sess = tf.compat.v1.Session(config=config)
 # 成功将需要的数据转换为矩阵
 ### 写一个函数，从原始mat中读取需要的数据，并进行返回
 chengfenshui,d5,dp5,dp6 = sF.getOdata()   #调用函数返回原始数据，数据已处理为均值为零，方差为1
