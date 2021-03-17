@@ -5,7 +5,7 @@ from keras import models
 from  keras import metrics
 from keras.optimizers import RMSprop
 import keras
-callback_list =[
+callback_list1 =[
     keras.callbacks.ModelCheckpoint(
         filepath= 'my_model.h5',      ##文件路径 存在当前路径下吧 还好找
         monitor= 'val_loss',         ## 监控指标
@@ -35,7 +35,7 @@ def trainModel(train_data,train_lable,test_data,test_lable):
                         epochs=30,
                         batch_size=20,
                         validation_data=(test_data,test_lable),
-                        callbacks= callback_list
+                        callbacks= callback_list1
                         )
     return history
 ###########################################################################################################

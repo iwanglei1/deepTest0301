@@ -1,7 +1,7 @@
 import scipy.io as scio
 import numpy as np
 import matplotlib.pyplot as plt
-
+import math
 
 ################################################################################
 ### 从桌面上的mat文件中读取数据，然后将数据处理成均值为0，标准差为1的形式
@@ -65,6 +65,7 @@ def drawLoss(history):
     plt.legend()
     plt.show()
 #########################################################################################################
+## 返回测试数据
 def getTestData(chengfenshui,d5,dp5,dp6):
     train_data = d5[:60]
     test_data = d5[60:]
@@ -76,4 +77,17 @@ def getTestData(chengfenshui,d5,dp5,dp6):
     test_lable = test_lable.astype('float32')
     train_data = train_data.reshape(60, 700, 1)
     test_data = test_data.reshape(20, 700, 1)
-    return test_data,test_lable
+    return test_data,test_lable,train_data,train_lable
+###########################################################################################################
+## 计算RMSEC、RMSEP
+def calculate_RMSE(p_value,r_calue):
+    cal_tem = 0
+    cc_len = len(p_value)
+    for i in range(cc_len):
+        tem = math.pow((p_value[i] - r_calue[i]),2)
+        cal_tem = cal_tem + tem
+    cal_cc = cal_tem/cc_len
+    cal_fin = math.sqrt(cal_cc)
+    return cal_fin
+
+##########################################################################################################
