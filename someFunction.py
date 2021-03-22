@@ -110,3 +110,14 @@ def calculate_R2(p_value,r_value):
     print(cars_tem)
     return r_2
 #########################################################################################################
+## 平滑曲线
+def smooth_curve(points,factor=0.9):
+    smoothed_points = []
+    for point in points:
+        if smoothed_points:
+            previous = smoothed_points[-1]
+            smoothed_points.append(previous * factor + points * (1 - factor))
+        else:
+            smoothed_points.append(point)
+    return smoothed_points
+###############################################################################################################
