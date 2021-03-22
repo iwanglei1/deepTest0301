@@ -34,7 +34,8 @@ for i in range(k):
 average_mae_history = [
     np.mean([x[i] for x in all_mae_histories]) for i in range(num_epochs)
 ]
-plt.plot(range(1,len(all_mae_histories) + 1),average_mae_history)
+print(len(average_mae_history))
+plt.plot(range(1,len(average_mae_history) + 1),average_mae_history)
 plt.xlabel('Epochs')
 plt.ylabel('Validation MAE')
 plt.show()
