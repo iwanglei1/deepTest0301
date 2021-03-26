@@ -34,13 +34,14 @@ model = models.Sequential()
 model.add(layers.Conv1D(64,7,activation='tanh',input_shape=(700,1)))
 model.add(layers.MaxPooling1D(3))
 
-model.add(layers.Conv1D(32,7,activation='tanh'))
+model.add(layers.Conv1D(64,7,activation='tanh'))
 model.add(layers.MaxPooling1D(3))
 
-model.add(layers.Conv1D(32,7,activation='tanh'))
+model.add(layers.Conv1D(64,7,activation='tanh'))
 model.add(layers.GlobalMaxPooling1D())
 
-model.add(layers.Dense(8))
+model.add(layers.Dense(16))
+# model.add(layers.Dense(8))
 model.add(layers.Dense(4))
 model.add(layers.Dense(1))
 
