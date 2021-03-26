@@ -17,7 +17,7 @@ sess = tf.compat.v1.Session(config=config)
 ## 准备几个参数，用于后续的自动化
 epochs_au = 30
 batch_size_au = 1
-
+jihuo = 'tanh'
 
 
 callback_list_test =[
@@ -31,13 +31,16 @@ moisture,d5,dp5,dp6 = sF.getOdata()
 test_data,test_lable,train_data,train_lable = sF.getTestData(moisture,d5,dp5,dp6 )
 
 model = models.Sequential()
-model.add(layers.Conv1D(64,7,activation='tanh',input_shape=(700,1)))
-model.add(layers.MaxPooling1D(3))
+model.add(layers.Conv1D(128,7,activation=jihuo,input_shape=(700,1)))
+model.add(layers.MaxPooling1D(2))
 
-model.add(layers.Conv1D(64,7,activation='tanh'))
-model.add(layers.MaxPooling1D(3))
+model.add(layers.Conv1D(64,7,activation=jihuo))
+model.add(layers.MaxPooling1D(2))
 
-model.add(layers.Conv1D(64,7,activation='tanh'))
+model.add(layers.Conv1D(32,7,activation=jihuo))
+model.add(layers.MaxPooling1D(2))
+
+model.add(layers.Conv1D(16,7,activation=jihuo))
 model.add(layers.GlobalMaxPooling1D())
 
 model.add(layers.Dense(16))
