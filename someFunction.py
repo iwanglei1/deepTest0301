@@ -2,6 +2,7 @@ import scipy.io as scio
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import pandas as pd
 
 ################################################################################
 ### 从桌面上的mat文件中读取数据，然后将数据处理成均值为0，标准差为1的形式
@@ -95,7 +96,7 @@ def calculate_RMSE(p_value,r_value):
 ## 计算决定系数R^2
 def calculate_R2(p_value,r_value):
     average = r_value.mean(axis=0)
-    # print(average)
+    print("平均值：",average)
     cr_len = len(r_value)
     car_tem = 0
     cars_tem = 0
@@ -103,11 +104,13 @@ def calculate_R2(p_value,r_value):
         temp_r = math.pow(r_value[i]-average,2)
         car_tem = car_tem + temp_r
     for i2 in range(cr_len):
-        temp_s = math.pow(r_value[i2]-p_value[i2],2)
+        temp_s = math.pow(p_value[i2]-average,2)
         cars_tem = cars_tem + temp_s
-    r_2 = 1-(cars_tem/car_tem)
-    print(car_tem)
-    print(cars_tem)
+    r_2 = (cars_tem/car_tem)
+    # print("cr_len长度：",cr_len)
+    # print("真值减平均：",car_tem)
+    # print("预测值减平均：",cars_tem)
+    # print("################")
     return r_2
 #########################################################################################################
 ## 平滑曲线
@@ -121,3 +124,10 @@ def smooth_curve(points,factor=0.9):
             smoothed_points.append(point)
     return smoothed_points
 ###############################################################################################################
+## 向CSV中写入数据
+def write_To_Csv(write_data):
+    df = pd.DataFrame(write_data,
+                      columns=['model_name', 'epochs', 'batch_size', 'RMSEC', 'R_C', 'RMSEP', 'R_P'])  # 列表数据转为数据框
+    df.to_csv('shiyanshujv.csv', mode='a', index=False, header=False)
+    return
+#############################################################################################################

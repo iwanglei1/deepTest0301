@@ -7,6 +7,8 @@ test_data,test_lable,train_data,train_lable = sF.getTestData(moisture,d5,dp5,dp6
 
 ceshi_shujv = np.load('yuanshishujv.npy')
 xunlian_shujv = np.load('xunlianji.npy')
+for i in ceshi_shujv:
+    print(i)
 
 rmsec = sF.calculate_RMSE(xunlian_shujv,train_lable) ## 训练集上的RMSE
 rmsep = sF.calculate_RMSE(ceshi_shujv,test_lable)  ## 测试集上的RMSE
