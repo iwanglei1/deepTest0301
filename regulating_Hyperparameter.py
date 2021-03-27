@@ -15,7 +15,7 @@ now_s = now.strftime("%Y-%m-%d-%H-%M-%S")
 config = tf.compat.v1.ConfigProto(gpu_options=tf.compat.v1.GPUOptions(allow_growth=True))
 sess = tf.compat.v1.Session(config=config)
 ## 准备几个参数，用于后续的自动化
-epochs_au = 100
+epochs_au = 50
 batch_size_au = 1
 jihuo = 'tanh'
 
@@ -33,6 +33,7 @@ test_data,test_lable,train_data,train_lable = sF.getTestData(moisture,d5,dp5,dp6
 model = models.Sequential()
 model.add(layers.Conv1D(64,7,activation=jihuo,input_shape=(700,1)))
 model.add(layers.MaxPooling1D(2))
+model.add(layers.Dropout(0.1))
 
 # model.add(layers.Conv1D(64,7,activation=jihuo))
 # model.add(layers.AveragePooling1D(2))
@@ -48,7 +49,6 @@ model.add(layers.MaxPooling1D(2))
 
 model.add(layers.Conv1D(32,7,activation=jihuo))
 model.add(layers.MaxPooling1D(2))
-
 model.add(layers.Conv1D(16,7,activation=jihuo))
 model.add(layers.GlobalMaxPooling1D())
 
