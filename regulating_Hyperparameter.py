@@ -33,26 +33,19 @@ test_data,test_lable,train_data,train_lable = sF.getTestData(moisture,d5,dp5,dp6
 model = models.Sequential()
 model.add(layers.Conv1D(64,7,activation=jihuo,input_shape=(700,1)))
 model.add(layers.MaxPooling1D(2))
-model.add(layers.Dropout(0.1))
 
-# model.add(layers.Conv1D(64,7,activation=jihuo))
-# model.add(layers.AveragePooling1D(2))
+model.add(layers.Conv1D(32,7,activation=jihuo))
+model.add(layers.MaxPooling1D(2))
+
+# model.add(layers.Conv1D(32,7,activation=jihuo))
+# model.add(layers.MaxPooling1D(2))
 #
-# model.add(layers.Conv1D(64,7,activation=jihuo))
-# model.add(layers.AveragePooling1D(2))
+# model.add(layers.Conv1D(32,7,activation=jihuo))
+# model.add(layers.MaxPooling1D(2))
+# model.add(layers.Conv1D(16,7,activation=jihuo))
+model.add(layers.Flatten())
 
-model.add(layers.Conv1D(64,7,activation=jihuo))
-model.add(layers.MaxPooling1D(2))
-
-model.add(layers.Conv1D(32,7,activation=jihuo))
-model.add(layers.MaxPooling1D(2))
-
-model.add(layers.Conv1D(32,7,activation=jihuo))
-model.add(layers.MaxPooling1D(2))
-model.add(layers.Conv1D(16,7,activation=jihuo))
-model.add(layers.GlobalMaxPooling1D())
-
-model.add(layers.Dense(16))
+# model.add(layers.Dense(16))
 # model.add(layers.Dense(8))
 model.add(layers.Dense(4))
 model.add(layers.Dense(2))
