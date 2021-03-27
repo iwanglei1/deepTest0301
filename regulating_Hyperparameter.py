@@ -47,7 +47,7 @@ model.add(layers.Conv1D(16,7,activation=jihuo))
 model.add(layers.Flatten())
 
 # model.add(layers.Dense(16))
-# model.add(layers.Dense(8))
+model.add(layers.Dense(8))
 model.add(layers.Dense(4))
 model.add(layers.Dense(2))
 model.add(layers.Dense(1))
