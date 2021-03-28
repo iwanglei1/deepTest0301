@@ -48,8 +48,8 @@ model.add(layers.Flatten())
 
 model.add(layers.Dense(16))
 model.add(layers.Dense(8))
-model.add(layers.Dense(4))
-model.add(layers.Dense(2))
+# model.add(layers.Dense(4))
+# model.add(layers.Dense(2))
 model.add(layers.Dense(1))
 
 model.summary()
@@ -68,8 +68,8 @@ result_trian = model.predict(train_data)
 result_predict = model.predict(test_data)
 rmsec = sF.calculate_RMSE(result_trian,train_lable) ## 训练集上的RMSE
 rmsep = sF.calculate_RMSE(result_predict,test_lable)  ## 测试集上的RMSE
-r_2_t = sF.calculate_R2(result_trian,train_lable)## 训练集上的R_2
-r_2_p = sF.calculate_R2(result_predict,test_lable)## 测试集上得R_2
+r_2_t = sF.calculate_R21(result_trian,train_lable)## 训练集上的R_2
+r_2_p = sF.calculate_R21(result_predict,test_lable)## 测试集上得R_2
 print("Root Mean Square Error of Calibrationh is : %g"%(rmsec))
 print("训练集上得决定系数：%f"%(r_2_t))
 print("Root Mean Square Error of Prediction is : %g"%(rmsep))
