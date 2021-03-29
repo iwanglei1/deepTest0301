@@ -1,7 +1,7 @@
 import regulating_Hyperparameter as aU
 import numpy as np
 
-lunshu = 100
+lunshu = 150
 rec_rmsep = np.empty(lunshu,dtype=float)
 for i in range(lunshu):
    rec_rmsep[i] = aU.au_Exp()
