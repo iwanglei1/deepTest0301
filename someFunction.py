@@ -28,7 +28,7 @@ def getOdata():
     #
     # print("######################################################")
     for i in dataContAll:                                               #TODO 此处重写方便返回四种成分
-         moisture[changdu] = i[2]
+         moisture[changdu] = i[3]
          changdu = changdu + 1
     data5 -= data5.mean(axis=0)  # 将数据压缩到0-1之间
     data5 /= data5.std(axis=0)
@@ -68,8 +68,8 @@ def drawLoss(history):
 #########################################################################################################
 ## 返回测试数据
 def getTestData(chengfenshui,d5,dp5,dp6):
-    train_data = dp6[:60]
-    test_data = dp6[60:]
+    train_data = dp5[:60]
+    test_data = dp5[60:]
     train_lable = chengfenshui[0:60]
     test_lable = chengfenshui[60:80]
     train_data = train_data.astype('float32')
