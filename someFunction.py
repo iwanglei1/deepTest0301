@@ -128,7 +128,7 @@ def smooth_curve(points,factor=0.9):
 def write_To_Csv(write_data):
     df = pd.DataFrame(write_data,
                       columns=['model_name', 'epochs', 'batch_size', 'RMSEC', 'R_C', 'RMSEP', 'R_P'])  # 列表数据转为数据框
-    df.to_csv('shiyanshujv.csv', mode='a', index=False, header=False)
+    df.to_csv('shiyanshujv-chaiyou.csv', mode='a', index=False, header=False)
     return
 #############################################################################################################
 def calculate_R21(p_value,r_value):
@@ -149,4 +149,18 @@ def calculate_R21(p_value,r_value):
     # print("预测值减平均：",cars_tem)
     # print("################")
     return r_2
+###################################################################################################################
+# 返回测试集、验证集
+def getTestDataFuel(spec,visc):
+    train_data = spec[:300]
+    test_data = spec[300:]
+    train_lable = visc[:300]
+    test_lable = visc[300:]
+    train_data = train_data.astype('float32')
+    test_data = test_data.astype('float32')
+    train_lable = train_lable.astype('float32')
+    test_lable = test_lable.astype('float32')
+    train_data = train_data.reshape(300, 401, 1)
+    test_data = test_data.reshape(95, 401, 1)
+    return test_data,test_lable,train_data,train_lable
 ###################################################################################################################
