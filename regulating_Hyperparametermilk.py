@@ -28,7 +28,7 @@ def au_Exp():
         )
     ]
     dataspecimen,dataprop = gM.getOdataMilk()
-    test_data,test_lable,train_data,train_lable = sF.getTestDataMilk()
+    test_data,test_lable,train_data,train_lable = sF.getTestDataMilk(dataspecimen,dataprop)
 
 
     model = models.Sequential()

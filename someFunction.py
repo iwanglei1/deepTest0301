@@ -188,7 +188,7 @@ def getTestDataMilk(spec,dataprop):
     test_data = test_data.astype('float32')
     train_lable = train_lable.astype('float32')
     test_lable = test_lable.astype('float32')
-    train_data = train_data.reshape(60, 650, 1)
-    test_data = test_data.reshape(7, 650, 1)
+    train_data = train_data.reshape(60, 1557, 1)
+    test_data = test_data.reshape(7, 1557, 1)
     return test_data, test_lable, train_data, train_lable
 ###################################################################################################################
