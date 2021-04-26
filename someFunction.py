@@ -128,7 +128,7 @@ def smooth_curve(points,factor=0.9):
 def write_To_Csv(write_data):
     df = pd.DataFrame(write_data,
                       columns=['model_name', 'epochs', 'batch_size', 'RMSEC', 'R_C', 'RMSEP', 'R_P'])  # 列表数据转为数据框
-    df.to_csv('shiyanshujv-yaopian.csv', mode='a', index=False, header=False)
+    df.to_csv('shiyanshujv-milk.csv', mode='a', index=False, header=False)
     return
 #############################################################################################################
 def calculate_R21(p_value,r_value):
@@ -176,5 +176,19 @@ def getTestDataPills(spec,hardness):
     test_lable = test_lable.astype('float32')
     train_data = train_data.reshape(400, 650, 1)
     test_data = test_data.reshape(60, 650, 1)
+    return test_data, test_lable, train_data, train_lable
+###################################################################################################################
+## 返回牛奶的测试集，验证集
+def getTestDataMilk(spec,dataprop):
+    train_data = spec[:60]
+    test_data = spec[60:]
+    train_lable = dataprop[:60]
+    test_lable = dataprop[60:]
+    train_data = train_data.astype('float32')
+    test_data = test_data.astype('float32')
+    train_lable = train_lable.astype('float32')
+    test_lable = test_lable.astype('float32')
+    train_data = train_data.reshape(60, 650, 1)
+    test_data = test_data.reshape(7, 650, 1)
     return test_data, test_lable, train_data, train_lable
 ###################################################################################################################
