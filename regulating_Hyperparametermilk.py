@@ -8,6 +8,7 @@ import tensorflow as tf
 import getMilkData as gM
 from keras.models import load_model
 import datetime
+import milkDep as mD
 import pandas as pd
 def au_Exp():
     now = datetime.datetime.now()
@@ -27,8 +28,9 @@ def au_Exp():
         save_best_only= True        ## 保持最佳模型
         )
     ]
-    dataspecimen,dataprop = gM.getOdataMilk()
-    test_data,test_lable,train_data,train_lable = sF.getTestDataMilk(dataspecimen,dataprop)
+    # dataspecimen,dataprop = gM.getOdataMilk()
+    # test_data,test_lable,train_data,train_lable = sF.getTestDataMilk(dataspecimen,dataprop)
+    test_data, test_lable, train_data, train_lable = mD.getOdatebmilkDep()
 
 
     model = models.Sequential()
@@ -77,4 +79,4 @@ def au_Exp():
 
     write_data=[(now_s,epochs_au,batch_size_au,rmsec,r_2_t,rmsep,r_2_p)]#需要新写入的数据
     sF.write_To_Csv(write_data)
-    return rmsep
+    return rmsep,r_2_p

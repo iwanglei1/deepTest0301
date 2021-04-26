@@ -180,10 +180,10 @@ def getTestDataPills(spec,hardness):
 ###################################################################################################################
 ## 返回牛奶的测试集，验证集
 def getTestDataMilk(spec,dataprop):
-    train_data = spec[:60]
-    test_data = spec[60:]
-    train_lable = dataprop[:60]
-    test_lable = dataprop[60:]
+    train_data = spec[7:]
+    test_data = spec[:7]
+    train_lable = dataprop[7:]
+    test_lable = dataprop[:7]
     train_data = train_data.astype('float32')
     test_data = test_data.astype('float32')
     train_lable = train_lable.astype('float32')
